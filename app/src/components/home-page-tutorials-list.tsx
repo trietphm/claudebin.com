@@ -12,13 +12,13 @@ const tutorials = [
   {
     id: "installation",
     title: "home.installation",
-    src: "/videos/installation.webm",
+    src: "https://cdn.claudebin.com/installation.webm",
     poster: "/images/poster-installation-1210x680.webp",
   },
   {
     id: "howToUse",
     title: "home.howToUse",
-    src: "/videos/how-to-use.webm",
+    src: "https://cdn.claudebin.com/how-to-use.webm",
     poster: "/images/poster-how-to-use-1210x680.webp",
   },
 ] as const;
