@@ -11,12 +11,14 @@ const tutorials = [
   {
     id: "installation",
     title: "home.installation",
-    src: "https://samplelib.com/lib/preview/webm/sample-30s.webm",
+    src: "/videos/installation.webm",
+    poster: "/images/poster-installation-1210x680.webp",
   },
   {
     id: "howToUse",
     title: "home.howToUse",
-    src: "https://samplelib.com/lib/preview/webm/sample-30s.webm",
+    src: "/videos/how-to-use.webm",
+    poster: "/images/poster-how-to-use-1210x680.webp",
   },
 ] as const;
 
@@ -32,8 +34,9 @@ const HomePageTutorialsList = ({ ...props }: HomePageTutorialsListProps) => {
               <TabsContent key={tutorial.id} value={tutorial.id}>
                 <video
                   src={tutorial.src}
-                  poster="/images/poster-1210x680.png"
+                  poster={tutorial.poster}
                   className="size-full rounded-2xl"
+                  preload="none"
                   controls
                 >
                   <track kind="captions" />
