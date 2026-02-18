@@ -33,7 +33,12 @@ const HomePageTutorialsList = ({ ...props }: HomePageTutorialsListProps) => {
           <div className="mx-auto w-full max-w-6xl rounded-3xl border border-gray-500/20 bg-gray-200/50 p-2">
             {tutorials.map((tutorial) => (
               <TabsContent key={tutorial.id} value={tutorial.id}>
-                <Video src={tutorial.src} poster={tutorial.poster} className="rounded-2xl" />
+                <Video
+                  src={tutorial.src}
+                  poster={tutorial.poster}
+                  alt={t(tutorial.title)}
+                  className="rounded-2xl"
+                />
               </TabsContent>
             ))}
           </div>
