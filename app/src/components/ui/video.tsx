@@ -5,8 +5,9 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useBoolean } from "usehooks-ts";
 
-import { SvgIconPlay } from "@/components/icon/svg-icon-play";
 import { cn } from "@/utils/helpers";
+
+import { SvgIconPlay } from "@/components/icon/svg-icon-play";
 
 type VideoProps = {
   src: string;
@@ -35,8 +36,8 @@ const Video = ({ src, poster, className }: VideoProps) => {
     >
       <Image src={poster} alt="" fill className="size-full rounded-2xl object-cover" />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="flex size-16 items-center justify-center rounded-full bg-gray-100/75 transition-transform hover:scale-110">
-          <SvgIconPlay size="lg" className="ml-0.5 text-white" />
+        <div className="flex size-20 items-center justify-center rounded-full bg-black/50 backdrop-blur-md transition-transform hover:scale-110">
+          <SvgIconPlay size="xl" className="text-white" />
         </div>
       </div>
     </button>

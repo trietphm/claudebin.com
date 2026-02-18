@@ -6,7 +6,7 @@ const SvgIconPlay = (props: Omit<SvgIconProps, "children">) => {
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M13.2,7.3l-9.5-6.1c-0.6-0.3-1.2-0.3-1.2,0.8v12c0,1,0.7,1.2,1.2,0.8l9.5-6.1C13.6,8.3,13.6,7.7,13.2,7.3"
+        d="M13.5 6.3 6.1 1.8C4.9 1 3.3 2 3.3 3.5v9c0 1.5 1.5 2.5 2.8 1.7l7.4-4.5c1.2-.7 1.2-2.7 0-3.4"
       />
     </SvgIcon>
   );
