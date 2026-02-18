@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Backdrop } from "@/components/ui/backdrop";
 import { Container } from "@/components/ui/container";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Video } from "@/components/ui/video";
 
 type HomePageTutorialsListProps = ComponentProps<"section">;
 
@@ -32,15 +33,7 @@ const HomePageTutorialsList = ({ ...props }: HomePageTutorialsListProps) => {
           <div className="mx-auto w-full max-w-6xl rounded-3xl border border-gray-500/20 bg-gray-200/50 p-2">
             {tutorials.map((tutorial) => (
               <TabsContent key={tutorial.id} value={tutorial.id}>
-                <video
-                  src={tutorial.src}
-                  poster={tutorial.poster}
-                  className="size-full rounded-2xl"
-                  preload="none"
-                  controls
-                >
-                  <track kind="captions" />
-                </video>
+                <Video src={tutorial.src} poster={tutorial.poster} className="rounded-2xl" />
               </TabsContent>
             ))}
           </div>
