@@ -30,7 +30,7 @@ const sections = [
     title: "footer.community",
     links: [
       { href: "https://github.com/wunderlabs-dev/claudebin.com", labelKey: "footer.github" },
-      { href: "https://discord.gg/xG7j75R4", labelKey: "footer.discord" },
+      { href: "https://discord.gg/EZp8VtCbzE", labelKey: "footer.discord" },
       { href: "https://x.com/vtemian", labelKey: "footer.vtemian" },
       { href: "https://x.com/balajmarius", labelKey: "footer.balajmarius" },
     ],
