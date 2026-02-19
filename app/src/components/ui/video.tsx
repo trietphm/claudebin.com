@@ -24,33 +24,33 @@ const Video = ({ src, poster, alt, className }: VideoProps) => {
 
   const { value: isPlaying, setTrue: handlePlay } = useBoolean();
 
-  if (isPlaying) {
-    return (
-      <video ref={videoRef} src={src} className={cn("size-full", className)} autoPlay controls>
-        <track kind="captions" />
-      </video>
-    );
-  }
-
   return (
-    <button
-      type="button"
-      className={cn("relative block size-full cursor-pointer", className)}
-      onClick={handlePlay}
-    >
-      <Image
-        src={poster}
-        alt={alt}
-        width={VIDEO_POSTER_WIDTH}
-        height={VIDEO_POSTER_HEIGHT}
-        className="size-full rounded-2xl object-cover"
-      />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="flex size-20 items-center justify-center rounded-full bg-black/50 backdrop-blur-md transition-transform hover:scale-110">
-          <SvgIconPlay size="xl" className="text-white" />
-        </div>
-      </div>
-    </button>
+    <div className={cn("relative aspect-video overflow-hidden", className)}>
+      {isPlaying ? (
+        <video ref={videoRef} src={src} className="size-full" autoPlay controls>
+          <track kind="captions" />
+        </video>
+      ) : (
+        <button
+          type="button"
+          className="relative size-full cursor-pointer"
+          onClick={handlePlay}
+        >
+          <Image
+            src={poster}
+            alt={alt}
+            width={VIDEO_POSTER_WIDTH}
+            height={VIDEO_POSTER_HEIGHT}
+            className="size-full object-cover"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex size-20 items-center justify-center rounded-full bg-black/50 backdrop-blur-md transition-transform hover:scale-110">
+              <SvgIconPlay size="xl" className="text-white" />
+            </div>
+          </div>
+        </button>
+      )}
+    </div>
   );
 };
 
