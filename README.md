@@ -12,6 +12,10 @@
   <a href="#getting-started">Getting Started</a>
 </p>
 
+<p align="center">
+  <a href="https://www.producthunt.com/products/claudebin?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-claudebin" target="_blank" rel="noopener noreferrer"><img alt="Claudebin - Export and share your Claude Code sessions as resumable URLs | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1082108&amp;theme=light&amp;t=1771502320629"></a>
+</p>
+
 ---
 
 > **Web App** (this repo) - the Next.js frontend and API at [claudebin.com](https://claudebin.com)
