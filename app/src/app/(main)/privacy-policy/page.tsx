@@ -33,11 +33,15 @@ const PrivacyPolicyPage = () => {
       <section className="flex flex-col gap-4">
         <Typography variant="h3">{t("privacyPolicy.overview.title")}</Typography>
         <Typography variant="small" color="muted" className="leading-7">
+          {t("privacyPolicy.overview.p4")}
+        </Typography>
+        <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.overview.p1")}
         </Typography>
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.overview.p2")}
         </Typography>
+
         <ul className="flex flex-col gap-1 pl-6">
           <li className="list-disc text-base text-gray-350 leading-7">
             {t("privacyPolicy.overview.item1")}
@@ -55,11 +59,9 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.overview.item5")}
           </li>
         </ul>
+
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.overview.p3")}
-        </Typography>
-        <Typography variant="small" color="muted" className="leading-7">
-          {t("privacyPolicy.overview.p4")}
         </Typography>
       </section>
 
@@ -74,6 +76,7 @@ const PrivacyPolicyPage = () => {
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.auth.p2")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.auth.item1")}
@@ -88,6 +91,7 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.auth.item4")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.auth.p3")}
           </Typography>
@@ -101,6 +105,7 @@ const PrivacyPolicyPage = () => {
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.content.p1")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.content.item1")}
@@ -124,9 +129,11 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.content.item7")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.content.p2")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.content.item8")}
@@ -135,6 +142,7 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.content.item9")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.content.p3")}
           </Typography>
@@ -148,6 +156,7 @@ const PrivacyPolicyPage = () => {
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.profile.p1")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.profile.item1")}
@@ -168,9 +177,11 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.profile.item6")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.profile.p2")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.profile.item7")}
@@ -191,6 +202,7 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.profile.item12")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.profile.p3")}
           </Typography>
@@ -204,6 +216,7 @@ const PrivacyPolicyPage = () => {
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.views.p2")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.views.item1")}
@@ -221,6 +234,7 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.views.item5")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.views.p3")}
           </Typography>
@@ -231,6 +245,7 @@ const PrivacyPolicyPage = () => {
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.analytics.p1")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.analytics.item1")}
@@ -245,6 +260,7 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.analytics.item4")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.analytics.p2")}
           </Typography>
@@ -255,6 +271,7 @@ const PrivacyPolicyPage = () => {
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.ai.p1")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.ai.item1")}
@@ -266,6 +283,7 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.ai.item3")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.ai.p2")}
           </Typography>
@@ -276,6 +294,7 @@ const PrivacyPolicyPage = () => {
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.cookies.p1")}
           </Typography>
+
           <ul className="flex flex-col gap-1 pl-6">
             <li className="list-disc text-base text-gray-350 leading-7">
               {t("privacyPolicy.data.cookies.item1")}
@@ -284,6 +303,7 @@ const PrivacyPolicyPage = () => {
               {t("privacyPolicy.data.cookies.item2")}
             </li>
           </ul>
+
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.cookies.p2")}
           </Typography>
@@ -305,6 +325,7 @@ const PrivacyPolicyPage = () => {
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.infrastructure.p1")}
         </Typography>
+
         <ul className="flex flex-col gap-1 pl-6">
           <li className="list-disc text-base text-gray-350 leading-7">
             {t("privacyPolicy.infrastructure.item1")}
@@ -328,6 +349,7 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.infrastructure.item7")}
           </li>
         </ul>
+
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.infrastructure.p2")}
         </Typography>
@@ -338,6 +360,7 @@ const PrivacyPolicyPage = () => {
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.legal.p1")}
         </Typography>
+
         <ul className="flex flex-col gap-1 pl-6">
           <li className="list-disc text-base text-gray-350 leading-7">
             {t("privacyPolicy.legal.item1")}
@@ -356,6 +379,7 @@ const PrivacyPolicyPage = () => {
 
       <section className="flex flex-col gap-4">
         <Typography variant="h3">{t("privacyPolicy.retention.title")}</Typography>
+
         <ul className="flex flex-col gap-1 pl-6">
           <li className="list-disc text-base text-gray-350 leading-7">
             {t("privacyPolicy.retention.item1")}
@@ -376,6 +400,7 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.retention.item6")}
           </li>
         </ul>
+
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.retention.p1")}
         </Typography>
@@ -386,6 +411,7 @@ const PrivacyPolicyPage = () => {
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.deletion.p1")}
         </Typography>
+
         <ul className="flex flex-col gap-1 pl-6">
           <li className="list-disc text-base text-gray-350 leading-7">
             {t("privacyPolicy.deletion.item1")}
@@ -397,6 +423,7 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.deletion.item3")}
           </li>
         </ul>
+
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.deletion.p3")}
         </Typography>
@@ -407,6 +434,7 @@ const PrivacyPolicyPage = () => {
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.rights.p1")}
         </Typography>
+
         <ul className="flex flex-col gap-1 pl-6">
           <li className="list-disc text-base text-gray-350 leading-7">
             {t("privacyPolicy.rights.item1")}
@@ -433,6 +461,7 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.rights.item8")}
           </li>
         </ul>
+
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.rights.p2")}
         </Typography>
@@ -456,6 +485,7 @@ const PrivacyPolicyPage = () => {
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.security.p1")}
         </Typography>
+
         <ul className="flex flex-col gap-1 pl-6">
           <li className="list-disc text-base text-gray-350 leading-7">
             {t("privacyPolicy.security.item1")}
@@ -470,6 +500,7 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.security.item4")}
           </li>
         </ul>
+
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.security.p2")}
         </Typography>
