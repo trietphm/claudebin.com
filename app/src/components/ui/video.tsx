@@ -31,11 +31,7 @@ const Video = ({ src, poster, alt, className }: VideoProps) => {
           <track kind="captions" />
         </video>
       ) : (
-        <button
-          type="button"
-          className="relative size-full cursor-pointer"
-          onClick={handlePlay}
-        >
+        <button type="button" className="relative size-full cursor-pointer" onClick={handlePlay}>
           <Image
             src={poster}
             alt={alt}
