@@ -167,8 +167,201 @@
   "embed": {
     "openFullConversation": "Open full conversation"
   },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "subtitle": "Claudebin (claudebin.com)",
+    "operatedBy": "Operated by Wunderlabs",
+    "lastUpdated": "Last updated: February 2026",
+    "overview": {
+      "title": "1. Overview",
+      "p1": "Claudebin is a free, open-source web application that allows users to publish and share Claude Code session logs as browsable and embeddable web pages.",
+      "p2": "This Privacy Policy explains:",
+      "item1": "What data we collect",
+      "item2": "How we use it",
+      "item3": "Who we share it with",
+      "item4": "How long we keep it",
+      "item5": "Your rights under GDPR and CCPA",
+      "p3": "If you use Claudebin, you are trusting us with data. Here's exactly what that means.",
+      "p4": "Claudebin is an independent project, not affiliated with Anthropic."
+    },
+    "data": {
+      "title": "2. Data We Collect",
+      "auth": {
+        "title": "A. Authentication Data (GitHub OAuth Only)",
+        "p1": "Users authenticate exclusively via GitHub OAuth.",
+        "p2": "We collect:",
+        "item1": "GitHub username",
+        "item2": "GitHub display name",
+        "item3": "GitHub avatar URL",
+        "item4": "GitHub user ID",
+        "p3": "Email addresses are collected by the authentication provider but are not stored in or exposed through public-facing tables within Claudebin.",
+        "p4": "We do not support email/password login."
+      },
+      "content": {
+        "title": "B. User-Published Content",
+        "p1": "When you publish a session, we store the full Claude Code session, including:",
+        "item1": "All user prompts",
+        "item2": "All AI assistant responses",
+        "item3": "Tool call results (file reads, writes, bash commands)",
+        "item4": "Working directory path",
+        "item5": "File paths accessed",
+        "item6": "Claude model name",
+        "item7": "Timestamps",
+        "p2": "Sessions can be:",
+        "item8": "Public (listed and searchable)",
+        "item9": "Unlisted (accessible via direct link only)",
+        "p3": "Raw session data (JSONL format, up to 50MB) is stored in Supabase Storage.",
+        "p4": "If you publish it, assume it may be visible indefinitely."
+      },
+      "profile": {
+        "title": "C. Public Profile Information",
+        "p1": "Public profile pages display:",
+        "item1": "GitHub username",
+        "item2": "Display name",
+        "item3": "Avatar",
+        "item4": "Account creation date",
+        "item5": "Thread count",
+        "item6": "View count",
+        "p2": "Public session pages display:",
+        "item7": "Full conversation",
+        "item8": "Session title",
+        "item9": "Author GitHub username and avatar",
+        "item10": "Creation date",
+        "item11": "View/like counts",
+        "item12": "Claude model used",
+        "p3": "If a session is public, its contents are public."
+      },
+      "views": {
+        "title": "D. First-Party View Counting",
+        "p1": "We track page views using a 1x1 transparent pixel.",
+        "p2": "To reduce abuse and count unique views:",
+        "item1": "IP address and User-Agent are hashed (SHA-256, truncated to 16 characters)",
+        "item2": "Raw IP addresses and User-Agents are never stored",
+        "item3": "Views are deduplicated within 1-hour windows",
+        "item4": "Records older than 30 days are automatically deleted",
+        "item5": "Bot traffic is filtered",
+        "p3": "This system is privacy-preserving by design."
+      },
+      "analytics": {
+        "title": "E. Analytics & Monitoring",
+        "p1": "We use the following third-party services:",
+        "item1": "Vercel Analytics — page-view analytics (loaded on all pages)",
+        "item2": "Vercel Speed Insights — performance telemetry (loaded on all pages)",
+        "item3": "Google Analytics — optional; only loaded if configured",
+        "item4": "Sentry — error monitoring and performance tracing (production only, routed through /monitoring tunnel; captures errors and ~10% of transactions)",
+        "p2": "These services may process device data, usage data, and performance metrics."
+      },
+      "ai": {
+        "title": "F. AI-Generated Session Titles",
+        "p1": "When a session is published:",
+        "item1": "The first 2000 characters of user prompts are sent server-side to OpenRouter",
+        "item2": "OpenRouter routes the request to OpenAI's GPT-4o-mini",
+        "item3": "A session title is generated automatically",
+        "p2": "This means a portion of your prompt content is transmitted to a third-party AI provider solely for title generation."
+      },
+      "cookies": {
+        "title": "G. Cookies",
+        "p1": "We use authentication session cookies managed by Supabase SSR:",
+        "item1": "JWT access token",
+        "item2": "Refresh token",
+        "p2": "We do not set additional custom tracking cookies.",
+        "p3": "However, third-party analytics providers may use their own cookies depending on configuration."
+      },
+      "emails": {
+        "title": "H. Emails Sent to Us",
+        "p1": "All emails received by Wunderlabs, including communications sent to office@wunderlabs.dev, are the property of Wunderlabs and may be stored, archived, and processed for operational, legal, or administrative purposes."
+      }
+    },
+    "infrastructure": {
+      "title": "3. Infrastructure & Hosting Providers",
+      "p1": "Claudebin relies on:",
+      "item1": "Supabase (PostgreSQL database, authentication, file storage)",
+      "item2": "Vercel (hosting and analytics)",
+      "item3": "Cloudflare R2 (video asset storage/CDN)",
+      "item4": "OpenRouter (AI routing service)",
+      "item5": "OpenAI (GPT-4o-mini via OpenRouter)",
+      "item6": "Sentry (error monitoring)",
+      "item7": "Google Analytics (optional)",
+      "p2": "These providers may process data on our behalf under their respective privacy policies and data processing agreements."
+    },
+    "legal": {
+      "title": "4. Legal Bases for Processing (GDPR)",
+      "p1": "For users in the European Economic Area (EEA), processing is based on:",
+      "item1": "Performance of a contract — providing the service",
+      "item2": "Legitimate interests — security, abuse prevention, analytics",
+      "item3": "Consent — where required for optional analytics",
+      "item4": "Legal obligations — compliance with applicable laws"
+    },
+    "retention": {
+      "title": "5. Data Retention",
+      "item1": "Published sessions: retained indefinitely unless manually removed",
+      "item2": "View records: automatically deleted after 30 days",
+      "item3": "Error logs: retained per Sentry retention policies",
+      "item4": "Authentication data: retained while account exists",
+      "item5": "Soft-deleted accounts: profile hidden, data remains stored",
+      "item6": "Emails: retained at Wunderlabs' discretion",
+      "p1": "We retain data only as long as necessary to operate the service and comply with legal obligations."
+    },
+    "deletion": {
+      "title": "6. Account Deletion",
+      "p1": "Account deletion is a soft delete:",
+      "item1": "Your profile becomes hidden from the UI",
+      "item2": "Your data remains in the database",
+      "item3": "Your published threads remain public",
+      "p3": "Deletion is irreversible."
+    },
+    "rights": {
+      "title": "7. Your Rights (GDPR & CCPA)",
+      "p1": "Depending on your jurisdiction, you may have the right to:",
+      "item1": "Access your personal data",
+      "item2": "Correct inaccurate data",
+      "item3": "Request deletion (where legally applicable)",
+      "item4": "Restrict or object to processing",
+      "item5": "Data portability",
+      "item6": "Withdraw consent (where applicable)",
+      "item7": "Request disclosure of categories of data collected (CCPA)",
+      "item8": "Request deletion of personal data (CCPA)",
+      "p2": "We do not sell personal information.",
+      "p3": "To exercise your rights, contact: <link>office@wunderlabs.dev</link>",
+      "p4": "We may require identity verification before fulfilling requests."
+    },
+    "transfers": {
+      "title": "8. International Data Transfers",
+      "p1": "Your data may be processed in countries outside your jurisdiction, including the United States. We rely on appropriate safeguards, including contractual protections, where required."
+    },
+    "security": {
+      "title": "9. Security",
+      "p1": "We implement technical and organizational measures to protect data, including:",
+      "item1": "Hashed view tracking",
+      "item2": "Server-side processing",
+      "item3": "Restricted database access",
+      "item4": "Authenticated storage access",
+      "p2": "No system is perfectly secure. If you publish sensitive information in a public session, it becomes public."
+    },
+    "children": {
+      "title": "10. Children's Privacy",
+      "p1": "Claudebin is not intended for children under 13.",
+      "p2": "We do not knowingly collect data from children under 13. If you believe a child has provided personal information, contact us and we will take appropriate action."
+    },
+    "payments": {
+      "title": "11. Payments",
+      "p1": "Claudebin is free.",
+      "p2": "We do not collect payment, billing, or subscription data."
+    },
+    "changes": {
+      "title": "12. Changes to This Policy",
+      "p1": "We may update this Privacy Policy periodically. Continued use of the service after changes means you accept the updated policy."
+    },
+    "contactInfo": {
+      "title": "13. Contact",
+      "p1": "Wunderlabs",
+      "p2": "Email: <link>office@wunderlabs.dev</link>",
+      "p3": "If you have privacy concerns, data requests, or security questions, contact us directly."
+    }
+  },
   "footer": {
     "copyright": "© {year} Claudebin. A <link>Wunderlabs</link> project. All rights reserved.",
+    "disclaimer": "Independent project, not affiliated with Anthropic.",
     "product": "Explore",
     "claudebin": "Claudebin",
     "threads": "Threads",
@@ -177,6 +370,8 @@
     "github": "GitHub",
     "discord": "Discord",
     "vtemian": "X @vtemian",
-    "balajmarius": "X @balajmarius"
+    "balajmarius": "X @balajmarius",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy"
   }
 }

@@ -33,6 +33,7 @@ const sections = [
       { href: "https://discord.gg/EZp8VtCbzE", labelKey: "footer.discord" },
       { href: "https://x.com/vtemian", labelKey: "footer.vtemian" },
       { href: "https://x.com/balajmarius", labelKey: "footer.balajmarius" },
+      { href: "mailto:office@wunderlabs.dev", labelKey: "footer.contact" },
     ],
   },
   {
@@ -40,6 +41,7 @@ const sections = [
     links: [
       { href: "/", labelKey: "footer.claudebin" },
       { href: "/threads", labelKey: "footer.threads" },
+      { href: "/privacy-policy", labelKey: "footer.privacyPolicy" },
       { href: "/auth/login", labelKey: "footer.login" },
     ],
   },
@@ -58,9 +60,15 @@ const Footer = ({ className, ...props }: FooterProps) => {
             <Link href="/">
               <SvgIconClaudebin size="auto" className="max-w-xl" />
             </Link>
-            <Typography variant="small" color="muted">
-              {t.rich("footer.copyright", renderers)}
-            </Typography>
+
+            <div className="flex flex-col gap-1">
+              <Typography variant="small" color="muted">
+                {t.rich("footer.copyright", renderers)}
+              </Typography>
+              <Typography variant="caption" color="muted">
+                {t("footer.disclaimer")}
+              </Typography>
+            </div>
           </div>
 
           <div className="flex flex-col gap-6 sm:flex-row lg:gap-12">
