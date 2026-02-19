@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
 import { Container } from "@/components/ui/container";
+import { Steps, StepsItem } from "@/components/ui/steps";
 import { Typography } from "@/components/ui/typography";
 
 const renderers = {
@@ -42,23 +43,13 @@ const PrivacyPolicyPage = () => {
           {t("privacyPolicy.overview.p2")}
         </Typography>
 
-        <ul className="flex flex-col gap-1 pl-6">
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.overview.item1")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.overview.item2")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.overview.item3")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.overview.item4")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.overview.item5")}
-          </li>
-        </ul>
+        <Steps variant="unordered">
+          <StepsItem>{t("privacyPolicy.overview.item1")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.overview.item2")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.overview.item3")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.overview.item4")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.overview.item5")}</StepsItem>
+        </Steps>
 
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.overview.p3")}
@@ -77,20 +68,12 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.data.auth.p2")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.auth.item1")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.auth.item2")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.auth.item3")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.auth.item4")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.auth.item1")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.auth.item2")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.auth.item3")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.auth.item4")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.auth.p3")}
@@ -106,42 +89,24 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.data.content.p1")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item1")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item2")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item3")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item4")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item5")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item6")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item7")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.content.item1")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.content.item2")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.content.item3")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.content.item4")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.content.item5")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.content.item6")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.content.item7")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.content.p2")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item8")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.content.item9")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.content.item8")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.content.item9")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.content.p3")}
@@ -157,51 +122,27 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.data.profile.p1")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item1")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item2")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item3")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item4")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item5")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item6")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.profile.item1")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item2")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item3")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item4")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item5")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item6")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.profile.p2")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item7")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item8")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item9")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item10")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item11")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.profile.item12")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.profile.item7")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item8")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item9")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item10")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item11")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.profile.item12")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.profile.p3")}
@@ -217,23 +158,13 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.data.views.p2")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.views.item1")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.views.item2")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.views.item3")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.views.item4")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.views.item5")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.views.item1")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.views.item2")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.views.item3")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.views.item4")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.views.item5")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.views.p3")}
@@ -246,20 +177,12 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.data.analytics.p1")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.analytics.item1")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.analytics.item2")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.analytics.item3")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.analytics.item4")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.analytics.item1")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.analytics.item2")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.analytics.item3")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.analytics.item4")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.analytics.p2")}
@@ -272,17 +195,11 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.data.ai.p1")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.ai.item1")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.ai.item2")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.ai.item3")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.ai.item1")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.ai.item2")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.ai.item3")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.ai.p2")}
@@ -295,14 +212,10 @@ const PrivacyPolicyPage = () => {
             {t("privacyPolicy.data.cookies.p1")}
           </Typography>
 
-          <ul className="flex flex-col gap-1 pl-6">
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.cookies.item1")}
-            </li>
-            <li className="list-disc text-base text-gray-350 leading-7">
-              {t("privacyPolicy.data.cookies.item2")}
-            </li>
-          </ul>
+          <Steps variant="unordered">
+            <StepsItem>{t("privacyPolicy.data.cookies.item1")}</StepsItem>
+            <StepsItem>{t("privacyPolicy.data.cookies.item2")}</StepsItem>
+          </Steps>
 
           <Typography variant="small" color="muted" className="leading-7">
             {t("privacyPolicy.data.cookies.p2")}
@@ -326,29 +239,15 @@ const PrivacyPolicyPage = () => {
           {t("privacyPolicy.infrastructure.p1")}
         </Typography>
 
-        <ul className="flex flex-col gap-1 pl-6">
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.infrastructure.item1")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.infrastructure.item2")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.infrastructure.item3")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.infrastructure.item4")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.infrastructure.item5")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.infrastructure.item6")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.infrastructure.item7")}
-          </li>
-        </ul>
+        <Steps variant="unordered">
+          <StepsItem>{t("privacyPolicy.infrastructure.item1")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.infrastructure.item2")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.infrastructure.item3")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.infrastructure.item4")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.infrastructure.item5")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.infrastructure.item6")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.infrastructure.item7")}</StepsItem>
+        </Steps>
 
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.infrastructure.p2")}
@@ -361,45 +260,25 @@ const PrivacyPolicyPage = () => {
           {t("privacyPolicy.legal.p1")}
         </Typography>
 
-        <ul className="flex flex-col gap-1 pl-6">
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.legal.item1")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.legal.item2")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.legal.item3")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.legal.item4")}
-          </li>
-        </ul>
+        <Steps variant="unordered">
+          <StepsItem>{t("privacyPolicy.legal.item1")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.legal.item2")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.legal.item3")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.legal.item4")}</StepsItem>
+        </Steps>
       </section>
 
       <section className="flex flex-col gap-4">
         <Typography variant="h3">{t("privacyPolicy.retention.title")}</Typography>
 
-        <ul className="flex flex-col gap-1 pl-6">
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.retention.item1")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.retention.item2")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.retention.item3")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.retention.item4")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.retention.item5")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.retention.item6")}
-          </li>
-        </ul>
+        <Steps variant="unordered">
+          <StepsItem>{t("privacyPolicy.retention.item1")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.retention.item2")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.retention.item3")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.retention.item4")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.retention.item5")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.retention.item6")}</StepsItem>
+        </Steps>
 
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.retention.p1")}
@@ -412,17 +291,11 @@ const PrivacyPolicyPage = () => {
           {t("privacyPolicy.deletion.p1")}
         </Typography>
 
-        <ul className="flex flex-col gap-1 pl-6">
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.deletion.item1")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.deletion.item2")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.deletion.item3")}
-          </li>
-        </ul>
+        <Steps variant="unordered">
+          <StepsItem>{t("privacyPolicy.deletion.item1")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.deletion.item2")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.deletion.item3")}</StepsItem>
+        </Steps>
 
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.deletion.p3")}
@@ -435,32 +308,16 @@ const PrivacyPolicyPage = () => {
           {t("privacyPolicy.rights.p1")}
         </Typography>
 
-        <ul className="flex flex-col gap-1 pl-6">
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item1")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item2")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item3")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item4")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item5")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item6")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item7")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.rights.item8")}
-          </li>
-        </ul>
+        <Steps variant="unordered">
+          <StepsItem>{t("privacyPolicy.rights.item1")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.rights.item2")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.rights.item3")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.rights.item4")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.rights.item5")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.rights.item6")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.rights.item7")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.rights.item8")}</StepsItem>
+        </Steps>
 
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.rights.p2")}
@@ -486,20 +343,12 @@ const PrivacyPolicyPage = () => {
           {t("privacyPolicy.security.p1")}
         </Typography>
 
-        <ul className="flex flex-col gap-1 pl-6">
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.security.item1")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.security.item2")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.security.item3")}
-          </li>
-          <li className="list-disc text-base text-gray-350 leading-7">
-            {t("privacyPolicy.security.item4")}
-          </li>
-        </ul>
+        <Steps variant="unordered">
+          <StepsItem>{t("privacyPolicy.security.item1")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.security.item2")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.security.item3")}</StepsItem>
+          <StepsItem>{t("privacyPolicy.security.item4")}</StepsItem>
+        </Steps>
 
         <Typography variant="small" color="muted" className="leading-7">
           {t("privacyPolicy.security.p2")}
