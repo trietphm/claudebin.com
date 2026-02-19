@@ -23,12 +23,14 @@ const PrivacyPolicyPage = () => {
         <Typography variant="body" color="neutral">
           {t("privacyPolicy.subtitle")}
         </Typography>
-        <Typography variant="small" color="muted">
-          {t("privacyPolicy.operatedBy")}
-        </Typography>
-        <Typography variant="small" color="muted">
-          {t("privacyPolicy.lastUpdated")}
-        </Typography>
+        <div className="flex flex-col gap-1">
+          <Typography variant="small" color="muted">
+            {t("privacyPolicy.operatedBy")}
+          </Typography>
+          <Typography variant="small" color="muted">
+            {t("privacyPolicy.lastUpdated")}
+          </Typography>
+        </div>
       </header>
 
       <section className="flex flex-col gap-4">
