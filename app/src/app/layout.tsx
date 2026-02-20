@@ -13,6 +13,7 @@ import { createClient } from "@/server/supabase/server";
 import copy from "@/copy/en-EN.json";
 
 import { cn } from "@/utils/helpers";
+import { APP_URL } from "@/utils/constants";
 
 import { AuthProvider } from "@/context/auth";
 import { QueryProvider } from "@/context/query";
@@ -32,6 +33,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(APP_URL),
   title: copy.metadata.title,
   description: copy.metadata.description,
   icons: "/images/favicon.svg",
