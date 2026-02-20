@@ -14,6 +14,9 @@ import { CliAuthLoginPageFormSkeleton } from "@/components/cli-auth-login-page-f
 export const metadata: Metadata = {
   title: copy.metadata.login.title,
   description: copy.metadata.login.description,
+  alternates: {
+    canonical: "/auth/login",
+  },
   openGraph: {
     title: copy.metadata.login.title,
     description: copy.metadata.login.description,

@@ -16,6 +16,9 @@ import { ThreadsPageThreadsContainer } from "@/containers/threads-page-threads-c
 export const metadata: Metadata = {
   title: copy.metadata.threads.title,
   description: copy.metadata.threads.description,
+  alternates: {
+    canonical: "/threads",
+  },
   openGraph: {
     title: copy.metadata.threads.title,
     description: copy.metadata.threads.description,

@@ -37,6 +37,9 @@ export const metadata: Metadata = {
   title: copy.metadata.title,
   description: copy.metadata.description,
   icons: "/images/favicon.svg",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     url: APP_URL,

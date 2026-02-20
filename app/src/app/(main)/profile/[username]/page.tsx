@@ -44,6 +44,9 @@ export const generateMetadata = async ({ params }: ProfilePageProps): Promise<Me
   return {
     title,
     description,
+    alternates: {
+      canonical: `/profile/${username}`,
+    },
     openGraph: {
       title,
       description,

@@ -40,6 +40,9 @@ export const generateMetadata = async ({
   return {
     title: thread.title,
     description: copy.metadata.description,
+    alternates: {
+      canonical: `/threads/${id}`,
+    },
     openGraph: {
       title: thread.title,
       description: copy.metadata.description,

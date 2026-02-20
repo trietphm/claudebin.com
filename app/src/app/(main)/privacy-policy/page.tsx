@@ -19,6 +19,9 @@ const renderers = {
 export const metadata: Metadata = {
   title: copy.metadata.privacyPolicy.title,
   description: copy.metadata.privacyPolicy.description,
+  alternates: {
+    canonical: "/privacy-policy",
+  },
   openGraph: {
     title: copy.metadata.privacyPolicy.title,
     description: copy.metadata.privacyPolicy.description,
