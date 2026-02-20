@@ -1,5 +1,5 @@
 export const AVATAR_FALLBACK_DELAY_MS = 0;
-export const AVATAR_ASSISTANT_IMAGE_SRC = "/images/assistant-640x640.png";
+export const AVATAR_ASSISTANT_IMAGE_SRC = "/images/assistant-640x640.webp";
 
 export const THREAD_SNIPPET_TEXTAREA_ROWS = 4;
 export const THREAD_ATTACHMENT_SIZE = 200;

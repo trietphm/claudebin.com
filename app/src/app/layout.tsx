@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     siteName: "Claudebin",
     title: copy.metadata.title,
     description: copy.metadata.description,
-    images: ["/images/og-default-1200x630.png"],
+    images: ["/images/og-default-1200x630.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: copy.metadata.title,
     description: copy.metadata.description,
-    images: ["/images/og-default-1200x630.png"],
+    images: ["/images/og-default-1200x630.webp"],
   },
 };
 
