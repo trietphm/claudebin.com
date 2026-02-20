@@ -38,6 +38,17 @@ export const metadata: Metadata = {
   description: copy.metadata.description,
   icons: "/images/favicon.svg",
   openGraph: {
+    type: "website",
+    url: APP_URL,
+    siteName: "Claudebin",
+    title: copy.metadata.title,
+    description: copy.metadata.description,
+    images: ["/images/og-default-1200x630.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: copy.metadata.title,
+    description: copy.metadata.description,
     images: ["/images/og-default-1200x630.png"],
   },
 };
