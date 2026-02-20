@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import type { Metadata } from "next";
 import { isEmpty, isNil } from "ramda";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
@@ -26,6 +27,28 @@ import { ProfilePageDangerZoneContainer } from "@/containers/profile-page-danger
 
 type ProfilePageProps = {
   params: Promise<{ username: string }>;
+};
+
+export const generateMetadata = async ({ params }: ProfilePageProps): Promise<Metadata> => {
+  const { username } = await params;
+  const supabase = await createClient();
+  const profile = await profiles.getByUsername(supabase, username);
+
+  if (isNil(profile)) {
+    return {};
+  }
+
+  const title = `${profile.name ?? profile.username} - Claudebin`;
+  const description = `Browse Claude Code sessions shared by ${profile.username} on Claudebin.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+    },
+  };
 };
 
 const ProfilePage = async ({ params }: ProfilePageProps) => {

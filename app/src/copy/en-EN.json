@@ -1,7 +1,19 @@
 {
   "metadata": {
     "title": "Claudebin - Your Claude Code Sessions Deserve a URL",
-    "description": "Turn your Claude Code sessions into shareable, embeddable, and continuable artifacts."
+    "description": "Turn your Claude Code sessions into shareable, embeddable, and continuable artifacts.",
+    "threads": {
+      "title": "Threads - Claudebin",
+      "description": "Browse and search through all Claude Code conversations shared on Claudebin."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy - Claudebin",
+      "description": "Learn how Claudebin collects, uses, and protects your data."
+    },
+    "login": {
+      "title": "Login - Claudebin",
+      "description": "Sign in with GitHub to publish and manage your Claude Code sessions on Claudebin."
+    }
   },
   "common": {
     "loading": "Loading...",

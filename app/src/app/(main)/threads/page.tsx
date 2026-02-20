@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { createClient } from "@/server/supabase/server";
 import { sessions } from "@/server/repos/sessions";
+
+import copy from "@/copy/en-EN.json";
 
 import { gradient } from "@/utils/renderers";
 
@@ -9,6 +12,15 @@ import { Container } from "@/components/ui/container";
 import { Typography } from "@/components/ui/typography";
 
 import { ThreadsPageThreadsContainer } from "@/containers/threads-page-threads-container";
+
+export const metadata: Metadata = {
+  title: copy.metadata.threads.title,
+  description: copy.metadata.threads.description,
+  openGraph: {
+    title: copy.metadata.threads.title,
+    description: copy.metadata.threads.description,
+  },
+};
 
 type ThreadsPageProps = {
   searchParams: Promise<{ query?: string }>;

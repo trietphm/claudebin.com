@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+
+import copy from "@/copy/en-EN.json";
 
 import { Container } from "@/components/ui/container";
 import { Steps, StepsItem } from "@/components/ui/steps";
@@ -12,6 +15,15 @@ const renderers = {
     </a>
   ),
 } as const;
+
+export const metadata: Metadata = {
+  title: copy.metadata.privacyPolicy.title,
+  description: copy.metadata.privacyPolicy.description,
+  openGraph: {
+    title: copy.metadata.privacyPolicy.title,
+    description: copy.metadata.privacyPolicy.description,
+  },
+};
 
 const PrivacyPolicyPage = () => {
   const t = useTranslations();
