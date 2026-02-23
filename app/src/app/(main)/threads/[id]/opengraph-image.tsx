@@ -27,8 +27,8 @@ const hostGroteskBold = fetch(
   "https://fonts.gstatic.com/s/hostgrotesk/v5/co3UmWBnlCJ3U42vbbfdwMjzqHAXOdFzqU5PuWfJzhY.ttf",
 ).then((result) => result.arrayBuffer());
 
-const assistantSrc = `data:image/webp;base64,${readFileSync(
-  join(process.cwd(), "public/images/assistant-640x640.webp"),
+const assistantSrc = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "public/images/assistant-640x640.png"),
 ).toString("base64")}`;
 
 const backgroundSrc = `data:image/png;base64,${readFileSync(
