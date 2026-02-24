@@ -30,7 +30,7 @@ const ThreadPageConversationLocalCommand = ({ block }: ThreadPageConversationLoc
 
   if (isNil(block.output)) {
     return (
-      <div className="flex items-center gap-2 py-2">
+      <div className="flex items-center gap-2">
         <SvgIconBash size="sm" color="primary" />
         <span className="text-primary text-sm">{t("chat.command")}</span>
         <ThreadPageConversationChip label={block.commandName} />
