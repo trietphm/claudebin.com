@@ -1,5 +1,5 @@
 -- ABOUTME: Prevents authenticated users from directly modifying system-managed columns
--- ABOUTME: SECURITY DEFINER functions (track_page_view, update_session_like_count) bypass this trigger
+-- ABOUTME: Uses current_user so SECURITY DEFINER functions naturally bypass this trigger
 
 -- Shared trigger function: raises 42501 (insufficient_privilege) -> PostgREST returns HTTP 403
 CREATE FUNCTION reject_system_column_update()
@@ -16,7 +16,7 @@ CREATE TRIGGER protect_sessions_system_columns
   BEFORE UPDATE ON sessions
   FOR EACH ROW
   WHEN (
-    current_setting('role') = 'authenticated'
+    current_user = 'authenticated'
     AND (
       NEW."viewCount"    IS DISTINCT FROM OLD."viewCount"
       OR NEW."likeCount"    IS DISTINCT FROM OLD."likeCount"
@@ -36,7 +36,7 @@ CREATE TRIGGER protect_profiles_system_columns
   BEFORE UPDATE ON profiles
   FOR EACH ROW
   WHEN (
-    current_setting('role') = 'authenticated'
+    current_user = 'authenticated'
     AND (
       NEW."viewCount"  IS DISTINCT FROM OLD."viewCount"
       OR NEW."createdAt"  IS DISTINCT FROM OLD."createdAt"
