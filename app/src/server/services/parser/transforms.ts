@@ -18,6 +18,8 @@ import {
   type RawContentBlock,
 } from "./schemas";
 
+import { redactSecrets } from "./secretPatterns";
+
 type McpToolInfo = { server: string; tool: string };
 
 export const BLOCK_TYPE_TO_RAW_TOOL: Record<string, string> = Object.fromEntries(
@@ -159,7 +161,8 @@ export const createTransforms = (workingDir: string | null): Transforms => {
       .replace(/[A-Za-z]:[\\/][^\s:]+/g, (match) => toRelativePath(match))
       .replace(/\/(Users|home)\/[^\s:]+/g, (match) => toRelativePath(match));
 
-  const sanitize = (text: string): string => stripAbsolutePaths(stripSystemReminders(text));
+  const sanitize = (text: string): string =>
+    redactSecrets(stripAbsolutePaths(stripSystemReminders(text)));
 
   const sanitizers: Partial<Record<string, (result: string) => string>> = {
     [RawTool.READ]: (result) => sanitize(stripLineNumbers(result)),

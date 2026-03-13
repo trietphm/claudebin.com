@@ -191,4 +191,165 @@ describe("createTransforms", () => {
       });
     });
   });
+
+  describe("secret redaction", () => {
+    const t = createTransforms("/Users/john/projects/myapp");
+
+    test("redacts OpenAI API keys", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "OPENAI_API_KEY=sk-proj-abcdefghijklmnopqrstuvwxyz1234567890",
+      );
+      expect(result).not.toContain("sk-proj-");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts legacy OpenAI API keys", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "key: sk-abcdefghijklmnopqrstuvwxyz1234567890abcdefghijkl",
+      );
+      expect(result).not.toContain("sk-abcdef");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts Anthropic API keys", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "ANTHROPIC_API_KEY=sk-ant-api03-" + "a".repeat(93) + "AA",
+      );
+      expect(result).not.toContain("sk-ant-api03-");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts Stripe live keys", () => {
+      const result = t.sanitizeResult("Bash", "sk_live_1234567890abcdefghijklmnop");
+      expect(result).not.toContain("sk_live_");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts Stripe test keys", () => {
+      const result = t.sanitizeResult("Bash", "rk_test_1234567890abcdefghijklmnop");
+      expect(result).not.toContain("rk_test_");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts GitHub personal access tokens", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "GITHUB_TOKEN=ghp_1234567890abcdefghijklmnopqrstuvwxyz",
+      );
+      expect(result).not.toContain("ghp_");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts GitHub fine-grained PAT", () => {
+      const result = t.sanitizeResult("Bash", "token: github_pat_" + "a".repeat(82));
+      expect(result).not.toContain("github_pat_");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts GitLab tokens", () => {
+      const result = t.sanitizeResult("Bash", "GITLAB_TOKEN=glpat-abcdefghijklmnopqrst");
+      expect(result).not.toContain("glpat-");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts Slack bot tokens", () => {
+      const result = t.sanitizeResult("Bash", "SLACK_TOKEN=xoxb-1234567890-1234567890-abcdefghij");
+      expect(result).not.toContain("xoxb-");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts AWS access keys", () => {
+      const result = t.sanitizeResult("Bash", "AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE");
+      expect(result).not.toContain("AKIAIOSFODNN7EXAMPLE");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts NPM tokens", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "//registry.npmjs.org/:_authToken=npm_" + "a".repeat(36),
+      );
+      expect(result).not.toContain("npm_");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts SendGrid API keys", () => {
+      const result = t.sanitizeResult("Bash", "SENDGRID_API_KEY=SG." + "a".repeat(66));
+      expect(result).not.toContain("SG.");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts private keys", () => {
+      const result = t.sanitizeResult(
+        "Read",
+        "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA...",
+      );
+      expect(result).not.toContain("-----BEGIN RSA PRIVATE KEY-----");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts JWT tokens", () => {
+      // JWT with alphanumeric-only parts for clean matching
+      const jwt =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiMTIzNDU2Nzg5MCJ9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV";
+      const result = t.sanitizeResult("Bash", `Authorization: Bearer ${jwt}`);
+      expect(result).toContain("[REDACTED]");
+      // At least part of the JWT should be redacted
+      expect(result.length).toBeLessThan(`Authorization: Bearer ${jwt}`.length);
+    });
+
+    test("redacts GCP API keys", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "GCP_API_KEY=AIzaSyDaGmWKa4JsXZ-HjGw7ISLn_3namBGewQe",
+      );
+      expect(result).not.toContain("AIzaSy");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts multiple secrets in same text", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "OPENAI_API_KEY=sk-proj-abc123def456ghi789 GITHUB_TOKEN=ghp_1234567890abcdefghijklmnopqrstuvwxyz",
+      );
+      expect(result).not.toContain("sk-proj-");
+      expect(result).not.toContain("ghp_");
+      expect(result.match(/\[REDACTED\]/g)?.length).toBeGreaterThanOrEqual(2);
+    });
+
+    test("preserves non-secret content", () => {
+      const result = t.sanitizeResult("Bash", "Hello world, status: ok, count: 42");
+      expect(result).toBe("Hello world, status: ok, count: 42");
+    });
+
+    test("redacts secrets in file read output", () => {
+      const result = t.sanitizeResult("Read", "STRIPE_SECRET_KEY=sk_live_abcdefghijklmnopqrstuv");
+      expect(result).not.toContain("sk_live_");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts Slack webhook URLs", () => {
+      const result = t.sanitizeResult(
+        "Bash",
+        "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX",
+      );
+      expect(result).not.toContain("hooks.slack.com/services/");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts HuggingFace tokens", () => {
+      const result = t.sanitizeResult("Bash", "HF_TOKEN=hf_" + "a".repeat(34));
+      expect(result).not.toContain("hf_");
+      expect(result).toContain("[REDACTED]");
+    });
+
+    test("redacts DigitalOcean tokens", () => {
+      const result = t.sanitizeResult("Bash", "DO_TOKEN=dop_v1_" + "a".repeat(64));
+      expect(result).not.toContain("dop_v1_");
+      expect(result).toContain("[REDACTED]");
+    });
+  });
 });
