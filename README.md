@@ -48,7 +48,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 OPENROUTER_API_KEY=             # For title generation
 ```
 
-For self-hosted Docker OAuth setup, follow [docs/google-oauth-docker-setup.md](/home/triet/workspace/holistics/claudebin.com/docs/google-oauth-docker-setup.md).
+For self-hosted Docker OAuth setup, follow [docs/google-oauth-docker-setup.md](docs/google-oauth-docker-setup.md).
 
 ### Local Development with the Plugin
 
@@ -61,6 +61,86 @@ For self-hosted Docker OAuth setup, follow [docs/google-oauth-docker-setup.md](/
    ```bash
    CLAUDEBIN_API_URL=http://localhost:3000 claude --plugin-dir /path/to/claudebin --dangerously-skip-permissions
    ```
+
+## Docker
+
+Run the full stack locally with Docker Compose, including Supabase (PostgreSQL, Auth, Storage, API).
+
+### Quick Start
+
+```bash
+# 1. Setup Supabase docker files and .env
+./scripts/docker-setup.sh
+
+# 2. Start all services (builds app, runs migrations, starts Supabase)
+docker compose up -d
+
+# 3. View logs
+docker compose logs -f app
+```
+
+### Services
+
+| Service | URL | Description |
+|---------|-----|-------------|
+| App | http://localhost:3000 | Claudebin web app |
+| Supabase API | http://localhost:8000 | REST/Auth API (Kong) |
+| Supabase Studio | http://localhost:3001 | Database admin UI |
+
+### Migrations
+
+Migrations run automatically when starting with `docker compose up`. The `migrations` service:
+
+1. Waits for the database to be healthy
+2. Creates a `schema_migrations` tracking table
+3. Applies any unapplied SQL files from `supabase/migrations/`
+4. Records each applied migration to prevent re-running
+
+**Run migrations manually** (if needed):
+
+```bash
+# Re-run the migrations container
+docker compose run --rm migrations
+
+# Or apply a specific migration directly
+docker compose exec db psql -U postgres -d postgres -f /path/to/migration.sql
+```
+
+**Check migration status:**
+
+```bash
+docker compose exec db psql -U postgres -d postgres \
+  -c "SELECT * FROM schema_migrations ORDER BY applied_at;"
+```
+
+### Common Commands
+
+```bash
+# Start in foreground (see all logs)
+docker compose up
+
+# Start in background
+docker compose up -d
+
+# Rebuild after code changes
+docker compose up --build -d
+
+# Stop all services
+docker compose down
+
+# Stop and remove volumes (full reset)
+docker compose down -v
+
+# View app logs
+docker compose logs -f app
+
+# Access database shell
+docker compose exec db psql -U postgres -d postgres
+```
+
+### OAuth Setup
+
+For Google and GitHub OAuth in Docker, see [docs/google-oauth-docker-setup.md](docs/google-oauth-docker-setup.md).
 
 ## Architecture
 
