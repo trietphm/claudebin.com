@@ -1,6 +1,6 @@
 # Google OAuth Setup for Local Docker Compose
 
-This guide is for the current self-hosted stack in [docker-compose.yml](/home/triet/workspace/holistics/claudebin.com/docker-compose.yml), which includes the upstream Supabase Docker services from `supabase-docker/docker/docker-compose.yml`.
+This guide is for the current self-hosted stack in [docker-compose.yml](../docker-compose.yml), which includes the upstream Supabase Docker services from `supabase-docker/docker/docker-compose.yml`.
 
 The important detail is:
 
@@ -29,8 +29,8 @@ If you have not already done this:
 
 This creates:
 
-- [supabase-docker/](/home/triet/workspace/holistics/claudebin.com/supabase-docker)
-- [.env](/home/triet/workspace/holistics/claudebin.com/.env)
+- [supabase-docker/](../supabase-docker/)
+- [.env](../.env)
 
 ## 2. Create a Google OAuth app
 
@@ -76,7 +76,7 @@ Copy the resulting:
 
 ## 4. Update the root `.env`
 
-Edit [.env](/home/triet/workspace/holistics/claudebin.com/.env) and set these values:
+Edit [.env](../.env) and set these values:
 
 ```env
 SITE_URL=http://localhost:3000
@@ -100,7 +100,7 @@ Notes:
 
 ## 5. Enable the providers in Supabase Auth compose config
 
-Edit [supabase-docker/docker/docker-compose.yml](/home/triet/workspace/holistics/claudebin.com/supabase-docker/docker/docker-compose.yml).
+Edit [supabase-docker/docker/docker-compose.yml](../supabase-docker/docker/docker-compose.yml).
 
 Under the `auth` service, uncomment these lines:
 
@@ -126,7 +126,7 @@ Run:
 docker compose up --build
 ```
 
-Use `--build` because the app container is built from [Dockerfile](/home/triet/workspace/holistics/claudebin.com/Dockerfile), and the image needs to include your latest app code.
+Use `--build` because the app container is built from [Dockerfile](../Dockerfile), and the image needs to include your latest app code.
 
 Expected services:
 
@@ -134,7 +134,7 @@ Expected services:
 - Supabase API: `http://localhost:8000`
 - Supabase Studio: `http://localhost:3001`
 
-The `migrations` service will automatically apply SQL files from [supabase/migrations](/home/triet/workspace/holistics/claudebin.com/supabase/migrations), including the Google/GitHub username generation migration.
+The `migrations` service will automatically apply SQL files from [supabase/migrations](../supabase/migrations), including the Google/GitHub username generation migration.
 
 ## 7. Verify the login flow
 
@@ -197,7 +197,7 @@ Check:
 
 ### OAuth providers do not appear to work at all
 
-Check that the `GOTRUE_EXTERNAL_*` lines were uncommented in [supabase-docker/docker/docker-compose.yml](/home/triet/workspace/holistics/claudebin.com/supabase-docker/docker/docker-compose.yml).
+Check that the `GOTRUE_EXTERNAL_*` lines were uncommented in [supabase-docker/docker/docker-compose.yml](../supabase-docker/docker/docker-compose.yml).
 
 ### Changes do not show up after editing config
 
