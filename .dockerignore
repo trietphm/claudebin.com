@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+.next
+**/.next
+out
+**/out
+
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker volumes
+db-data
+storage-data
+
+# Misc
+*.log
+*.md
+!README.md
+.DS_Store
+Thumbs.db
+
+# Development
+.husky
+.claude
+docs

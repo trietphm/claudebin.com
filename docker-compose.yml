@@ -1,0 +1,66 @@
+# Claudebin Docker Setup
+#
+# This extends the official Supabase self-hosted setup.
+#
+# Quick Start:
+#   1. Get Supabase docker files:
+#      git clone --depth 1 https://github.com/supabase/supabase supabase-docker
+#      cp supabase-docker/docker/.env.example .env
+#
+#   2. Start everything:
+#      docker compose up -d
+#
+# Services:
+#   - App: http://localhost:3000
+#   - Supabase API: http://localhost:8000
+#   - Supabase Studio: http://localhost:3001
+
+include:
+  - supabase-docker/docker/docker-compose.yml
+
+services:
+  migrations:
+    image: postgres:15
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: ${POSTGRES_PORT:-5432}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_USER: postgres
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      MIGRATIONS_DIR: /workspace/supabase/migrations
+    volumes:
+      - ./supabase:/workspace/supabase:ro
+      - ./scripts/apply-migrations.sh:/workspace/scripts/apply-migrations.sh:ro
+    command: ["sh", "/workspace/scripts/apply-migrations.sh"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: http://localhost:8000
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${ANON_KEY}
+        NEXT_PUBLIC_APP_URL: http://localhost:3000
+    ports:
+      - "3000:3000"
+    environment:
+      # Server-side uses internal Docker network
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_SERVICE_ROLE_KEY: ${SERVICE_ROLE_KEY}
+      SUPABASE_ANON_KEY: ${ANON_KEY}
+      # Keep runtime env aligned with build-time public env values.
+      NEXT_PUBLIC_SUPABASE_URL: http://localhost:8000
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${ANON_KEY}
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+    depends_on:
+      kong:
+        condition: service_healthy
+      rest:
+        condition: service_started
+      migrations:
+        condition: service_completed_successfully
+    restart: unless-stopped

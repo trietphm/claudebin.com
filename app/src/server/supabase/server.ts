@@ -13,9 +13,17 @@ type Cookie = {
 export const createClient = cache(async () => {
   const store = await cookies();
 
+  if (!process.env.SUPABASE_URL) {
+    throw new Error("SUPABASE_URL is required for server-side Supabase access.");
+  }
+
+  if (!process.env.SUPABASE_ANON_KEY) {
+    throw new Error("SUPABASE_ANON_KEY is required for server-side Supabase access.");
+  }
+
   return createServerClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_ANON_KEY,
     {
       cookies: {
         getAll: () => store.getAll(),

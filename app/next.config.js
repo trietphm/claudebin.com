@@ -7,9 +7,11 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 // Vercel uses /vercel/path0, local uses resolved path to monorepo root
 const root = process.env.VERCEL ? "/vercel/path0" : resolve(__dirname, "../..");
+const useStandaloneOutput = process.env.NEXT_DISABLE_STANDALONE !== "1";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  ...(useStandaloneOutput ? { output: "standalone" } : {}),
   outputFileTracingRoot: root,
   turbopack: {
     root: root,
