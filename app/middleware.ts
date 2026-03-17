@@ -1,6 +1,8 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
+import { getSupabaseAuthStorageKey } from "@/supabase/auth-storage-key";
+
 const PUBLIC_ROUTES = [
   "/",
   "/auth/*",
@@ -25,6 +27,9 @@ export const middleware = async (request: NextRequest) => {
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
+      cookieOptions: {
+        name: getSupabaseAuthStorageKey(),
+      },
       cookies: {
         getAll: () => request.cookies.getAll(),
         setAll: (cookiesToSet) => {

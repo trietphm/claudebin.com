@@ -7,14 +7,10 @@ export const createServiceClient = () => {
     throw new Error("SUPABASE_URL is required for server-side Supabase access.");
   }
 
-  return createClient<Database>(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY,
-    {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-      },
+  return createClient<Database>(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
     },
-  );
+  });
 };

@@ -12,7 +12,7 @@
     },
     "login": {
       "title": "Login - Claudebin",
-      "description": "Sign in with GitHub to publish and manage your Claude Code sessions on Claudebin."
+      "description": "Sign in with Google or GitHub to publish and manage your Claude Code sessions on Claudebin."
     }
   },
   "common": {
@@ -42,6 +42,7 @@
   "appBar": {
     "claudebin": "Claudebin",
     "threads": "Threads",
+    "account": "Account",
     "login": "Login",
     "logout": "Logout"
   },
@@ -132,7 +133,8 @@
   "login": {
     "title": "<gradient>Authenticate</gradient>\nto Claudebin",
     "badge": "Secure login",
-    "description": "Sign in to publish and manage your sessions",
+    "description": "Sign in with Google or GitHub to publish and manage your sessions",
+    "continueWithGoogle": "Continue with Google",
     "continueWithGithub": "Continue with GitHub",
     "errorTitle": "Authentication failed",
     "errorDescription": "Something went wrong during sign in. Please try again."
@@ -199,13 +201,13 @@
     "data": {
       "title": "2. Data We Collect",
       "auth": {
-        "title": "A. Authentication Data (GitHub OAuth Only)",
-        "p1": "Users authenticate exclusively via GitHub OAuth.",
+        "title": "A. Authentication Data (Google and GitHub OAuth)",
+        "p1": "Users authenticate via Google OAuth or GitHub OAuth.",
         "p2": "We collect:",
-        "item1": "GitHub username",
-        "item2": "GitHub display name",
-        "item3": "GitHub avatar URL",
-        "item4": "GitHub user ID",
+        "item1": "Provider username or generated Claudebin username",
+        "item2": "Display name",
+        "item3": "Avatar URL",
+        "item4": "Authentication provider user ID",
         "p3": "Email addresses are collected by the authentication provider but are not stored in or exposed through public-facing tables within Claudebin.",
         "p4": "We do not support email/password login."
       },
@@ -228,7 +230,7 @@
       "profile": {
         "title": "C. Public Profile Information",
         "p1": "Public profile pages display:",
-        "item1": "GitHub username",
+        "item1": "Username",
         "item2": "Display name",
         "item3": "Avatar",
         "item4": "Account creation date",
@@ -237,7 +239,7 @@
         "p2": "Public session pages display:",
         "item7": "Full conversation",
         "item8": "Session title",
-        "item9": "Author GitHub username and avatar",
+        "item9": "Author username and avatar",
         "item10": "Creation date",
         "item11": "View/like counts",
         "item12": "Claude model used",

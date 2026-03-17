@@ -32,8 +32,18 @@ const AppBar = ({ className, ...props }: AppBarProps) => {
   const pathname = usePathname();
   const md = useMediaQuery(mediaQueries.md, { initializeWithValue: isServer });
 
-  const { user, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const [isSticky, setIsSticky] = useState<number>();
+
+  const avatarUrl = profile?.avatarUrl ?? user?.user_metadata.avatar_url ?? user?.user_metadata.picture;
+  const profileLabel =
+    profile?.username ??
+    profile?.name ??
+    user?.user_metadata.full_name ??
+    user?.user_metadata.name ??
+    user?.email ??
+    t("appBar.account");
+  const profileHref = profile?.username ? `/profile/${profile.username}` : null;
 
   useEventListener("scroll", () => {
     setIsSticky(window.scrollY);
@@ -77,13 +87,23 @@ const AppBar = ({ className, ...props }: AppBarProps) => {
 
           {user ? (
             <div className="flex items-center gap-4 sm:gap-8">
-              <NavLink href={`/profile/${user.user_metadata.user_name}`}>
-                <Avatar size="sm">
-                  <AvatarImage src={user.user_metadata.avatar_url} />
-                  <AvatarFallback name={user.user_metadata.user_name} />
-                </Avatar>
-                <NavLabel>{user.user_metadata.user_name}</NavLabel>
-              </NavLink>
+              {profileHref ? (
+                <NavLink href={profileHref}>
+                  <Avatar size="sm">
+                    <AvatarImage src={avatarUrl ?? undefined} />
+                    <AvatarFallback name={profileLabel} />
+                  </Avatar>
+                  <NavLabel>{profileLabel}</NavLabel>
+                </NavLink>
+              ) : (
+                <div className="flex items-center gap-3">
+                  <Avatar size="sm">
+                    <AvatarImage src={avatarUrl ?? undefined} />
+                    <AvatarFallback name={profileLabel} />
+                  </Avatar>
+                  <NavLabel>{profileLabel}</NavLabel>
+                </div>
+              )}
 
               <Button onClick={signOut}>
                 <SvgIconUser size="sm" />

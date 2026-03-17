@@ -8,6 +8,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
+import { profiles } from "@/server/repos/profiles";
 import { createClient } from "@/server/supabase/server";
 
 import copy from "@/copy/en-EN.json";
@@ -64,13 +65,16 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  const profile = user ? await profiles.getById(supabase, user.id) : null;
 
   return (
     <html lang={locale} className={cn(sans.variable, mono.variable)}>
       <body className="min-h-screen bg-fade bg-gray-100 font-sans text-white antialiased selection:bg-orange-50 selection:text-white">
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
-            <AuthProvider initialUser={user}>{children}</AuthProvider>
+            <AuthProvider initialUser={user} initialProfile={profile}>
+              {children}
+            </AuthProvider>
           </NextIntlClientProvider>
         </QueryProvider>
 

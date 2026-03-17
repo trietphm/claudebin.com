@@ -102,7 +102,7 @@ Find these values in your Supabase dashboard under Settings > API.
 
 ## Next Steps
 
-1. Set up GitHub OAuth in Supabase (see `docs/12-12-2025-authentication.md`)
+1. For the current local Docker flow, follow [docs/google-oauth-docker-setup.md](/home/triet/workspace/holistics/claudebin.com/docs/google-oauth-docker-setup.md)
 2. Configure environment variables
 3. Test the authentication flow
 

@@ -2,16 +2,19 @@
 
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useBoolean } from "usehooks-ts";
+import { useState } from "react";
 
 import { createClient } from "@/supabase/client";
 
 import { SvgIconGithub } from "@/components/icon/svg-icon-github";
+import { SvgIconGoogle } from "@/components/icon/svg-icon-google";
 import { SvgIconSkull } from "@/components/icon/svg-icon-skull";
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 
 import { LoginPageHeader } from "@/components/login-page-header";
+
+type AuthProvider = "github" | "google";
 
 const CliAuthLoginPageForm = () => {
   const t = useTranslations();
@@ -21,23 +24,23 @@ const CliAuthLoginPageForm = () => {
   const authError = searchParams.get("error");
   const authErrorDescription = searchParams.get("error_description");
 
-  const { value: isLoading, setTrue: setIsLoading, setFalse: resetIsLoading } = useBoolean();
+  const [loadingProvider, setLoadingProvider] = useState<AuthProvider | null>(null);
 
-  const handleSignIn = async () => {
-    setIsLoading();
+  const handleSignIn = async (provider: AuthProvider) => {
+    setLoadingProvider(provider);
 
     const supabase = createClient();
     const redirect = encodeURIComponent(redirectTo);
 
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: "github",
+      provider,
       options: {
         redirectTo: `${window.location.origin}/auth/callback?redirect=${redirect}`,
       },
     });
 
     if (error) {
-      resetIsLoading();
+      setLoadingProvider(null);
     }
   };
 
@@ -58,10 +61,21 @@ const CliAuthLoginPageForm = () => {
           </div>
         ) : null}
 
-        <Button variant="secondary" onClick={handleSignIn} disabled={isLoading}>
-          <SvgIconGithub />
-          {isLoading ? t("common.loading") : t("login.continueWithGithub")}
-        </Button>
+        <div className="flex w-full max-w-sm flex-col items-stretch gap-3">
+          <Button onClick={() => handleSignIn("google")} disabled={loadingProvider !== null}>
+            <SvgIconGoogle />
+            {loadingProvider === "google" ? t("common.loading") : t("login.continueWithGoogle")}
+          </Button>
+
+          <Button
+            variant="secondary"
+            onClick={() => handleSignIn("github")}
+            disabled={loadingProvider !== null}
+          >
+            <SvgIconGithub />
+            {loadingProvider === "github" ? t("common.loading") : t("login.continueWithGithub")}
+          </Button>
+        </div>
       </div>
     </div>
   );

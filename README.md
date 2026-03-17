@@ -48,6 +48,8 @@ SUPABASE_SERVICE_ROLE_KEY=
 OPENROUTER_API_KEY=             # For title generation
 ```
 
+For self-hosted Docker OAuth setup, follow [docs/google-oauth-docker-setup.md](/home/triet/workspace/holistics/claudebin.com/docs/google-oauth-docker-setup.md).
+
 ### Local Development with the Plugin
 
 1. Start the web app: `bun dev` (runs on port 3000)
@@ -87,7 +89,7 @@ claudebin.com/
 | `/threads/[id]` | View a session |
 | `/threads/[id]/embed` | Embeddable version |
 | `/profile/[username]` | User profile |
-| `/auth/login` | GitHub OAuth |
+| `/auth/login` | Google and GitHub OAuth |
 
 ### API
 
@@ -128,7 +130,7 @@ PostgreSQL with Row Level Security. Auto-profile creation on signup, denormalize
 |---|---|
 | **Framework** | Next.js 16, Turbopack |
 | **Database** | Supabase (PostgreSQL) |
-| **Auth** | Supabase Auth, GitHub OAuth |
+| **Auth** | Supabase Auth, Google OAuth, GitHub OAuth |
 | **Styling** | Tailwind CSS, shadcn/ui |
 | **Tooling** | Bun, Biome |
 
