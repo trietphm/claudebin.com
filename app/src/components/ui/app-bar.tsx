@@ -35,7 +35,8 @@ const AppBar = ({ className, ...props }: AppBarProps) => {
   const { user, profile, signOut } = useAuth();
   const [isSticky, setIsSticky] = useState<number>();
 
-  const avatarUrl = profile?.avatarUrl ?? user?.user_metadata.avatar_url ?? user?.user_metadata.picture;
+  const avatarUrl =
+    profile?.avatarUrl ?? user?.user_metadata.avatar_url ?? user?.user_metadata.picture;
   const profileLabel =
     profile?.username ??
     profile?.name ??

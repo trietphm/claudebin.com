@@ -92,9 +92,7 @@ const AuthProvider = ({ initialUser, initialProfile, children }: AuthProviderPro
     await supabase.auth.signOut();
   };
 
-  return (
-    <AuthContext.Provider value={{ user, profile, signOut }}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user, profile, signOut }}>{children}</AuthContext.Provider>;
 };
 
 const useAuth = () => useContext(AuthContext);
