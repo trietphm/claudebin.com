@@ -128,6 +128,7 @@ const normalizeAnswer = (
 
 export type Transforms = {
   toRelativePath: (absolutePath: string) => string;
+  sanitizeText: (text: string) => string;
   sanitizeResult: (toolName: string, result: string) => string;
   transformToolUse: (id: string, name: string, input: Record<string, unknown>) => ContentBlock;
   enhanceToolOutput: (toolName: string, toolUseResult: unknown) => Record<string, unknown> | null;
@@ -405,6 +406,7 @@ export const createTransforms = (workingDir: string | null): Transforms => {
 
   return {
     toRelativePath,
+    sanitizeText: sanitize,
     sanitizeResult,
     transformToolUse,
     enhanceToolOutput,

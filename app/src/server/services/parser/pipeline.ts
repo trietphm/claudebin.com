@@ -192,6 +192,11 @@ export const createPipeline = (workingDir: string | null = null) => {
     const block = normalizeBlock(raw);
     if (!block || isFilteredBlock(block)) return;
     flushPendingTasks();
+    // Sanitize text blocks to redact secrets
+    if (block.type === BlockType.TEXT) {
+      emit({ ...block, text: transforms.sanitizeText(block.text) });
+      return;
+    }
     emit(block);
   };
 
@@ -260,7 +265,7 @@ export const createPipeline = (workingDir: string | null = null) => {
         emit({ type: BlockType.LOCAL_COMMAND, ...localCommand });
         return;
       }
-      emit({ type: BlockType.TEXT, text: content });
+      emit({ type: BlockType.TEXT, text: transforms.sanitizeText(content) });
       return;
     }
 
@@ -274,7 +279,7 @@ export const createPipeline = (workingDir: string | null = null) => {
 
     emit({
       type: BlockType.TEXT,
-      text,
+      text: transforms.sanitizeText(text),
       attachments: attachments.length > 0 ? attachments : undefined,
     });
   };

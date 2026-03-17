@@ -352,4 +352,44 @@ describe("createTransforms", () => {
       expect(result).toContain("[REDACTED]");
     });
   });
+
+  describe("sanitizeText", () => {
+    const t = createTransforms(null);
+
+    test("redacts AWS ASIA temporary keys in text", () => {
+      const result = t.sanitizeText("My AWS key is ASIAABCDEFGHIJKLMNOP");
+      expect(result).toBe("My AWS key is [REDACTED]");
+    });
+
+    test("redacts AWS AKIA access keys in text", () => {
+      const result = t.sanitizeText("AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE");
+      expect(result).toBe("AWS_ACCESS_KEY_ID=[REDACTED]");
+    });
+
+    test("redacts multiple secrets in user message", () => {
+      const result = t.sanitizeText(
+        "Keys: sk_live_abc123def456ghij AKIAIOSFODNN7EXAMPLE ghp_1234567890abcdefghijklmnopqrstuvwxyz",
+      );
+      expect(result).not.toContain("sk_live_");
+      expect(result).not.toContain("AKIA");
+      expect(result).not.toContain("ghp_");
+      expect(result.match(/\[REDACTED\]/g)?.length).toBe(3);
+    });
+
+    test("preserves normal text content", () => {
+      const result = t.sanitizeText("Hello, can you help me debug this code?");
+      expect(result).toBe("Hello, can you help me debug this code?");
+    });
+
+    test("strips absolute paths from text", () => {
+      const result = t.sanitizeText("File at /Users/john/projects/app/src/index.ts");
+      expect(result).not.toContain("/Users/john");
+      expect(result).toContain("projects/app/src/index.ts");
+    });
+
+    test("strips system reminders from text", () => {
+      const result = t.sanitizeText("Hello <system-reminder>secret stuff</system-reminder> world");
+      expect(result).toBe("Hello  world");
+    });
+  });
 });
