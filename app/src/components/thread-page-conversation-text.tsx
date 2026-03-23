@@ -118,7 +118,7 @@ const ThreadPageConversationText = ({ block }: ThreadPageConversationTextProps) 
       ) : null}
 
       {block.attachments?.length ? (
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {block.attachments?.map((attachment) => (
             <ThreadPageConversationAttachmentChip key={attachment.data} attachment={attachment} />
           ))}
