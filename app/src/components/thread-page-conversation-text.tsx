@@ -2,8 +2,11 @@
 
 import { Children, isValidElement, useMemo, type ReactNode } from "react";
 import { head, last, split } from "ramda";
-import rehypeSanitize from "rehype-sanitize";
+import type { PluggableList } from "unified";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import Markdown from "react-markdown";
 
 import type { Role, TextBlock } from "@/supabase/types/message";
@@ -37,8 +40,19 @@ type ThreadPageConversationTextProps = {
   block: TextBlock;
 };
 
-const REMARK_PLUGINS = [remarkGfm];
-const REHYPE_PLUGINS = [rehypeSanitize];
+// ABOUTME: Extends code className allowlist so remark-math's intermediate
+// representation (language-math + math-inline/math-display) survives
+// sanitization before rehypeKatex renders it.
+const mathSanitizeSchema = {
+  ...defaultSchema,
+  attributes: {
+    ...defaultSchema.attributes,
+    code: [["className", /^language-./, "math-inline", "math-display"]],
+  },
+};
+
+const REMARK_PLUGINS: PluggableList = [remarkMath, remarkGfm];
+const REHYPE_PLUGINS: PluggableList = [[rehypeSanitize, mathSanitizeSchema], rehypeKatex];
 
 const parseCodeBlock = (children: ReactNode) => {
   const firstChild = head(Children.toArray(children));
