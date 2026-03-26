@@ -1,4 +1,5 @@
 import "@/static/css/globals.css";
+import "katex/dist/katex.min.css";
 
 import type { Metadata } from "next";
 import { Host_Grotesk, JetBrains_Mono } from "next/font/google";
