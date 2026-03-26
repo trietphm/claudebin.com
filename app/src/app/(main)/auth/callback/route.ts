@@ -3,7 +3,13 @@ import { type NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/server/supabase/server";
 
 export const GET = async (request: NextRequest) => {
-  const { searchParams, origin } = new URL(request.url);
+  // for some reason the origin is not set in the request even though nginx already set
+  ///  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  //   proxy_set_header X-Forwarded-Proto $scheme;
+  //   proxy_set_header X-Forwarded-Host $host;
+  // => quick workaround
+  const { searchParams } = new URL(request.url);
+  const origin = process.env.NEXT_PUBLIC_APP_URL || new URL(request.url).origin;
 
   const code = searchParams.get("code");
   const redirectTo = searchParams.get("redirect") || "/";
