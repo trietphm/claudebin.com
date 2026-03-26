@@ -36,7 +36,7 @@
     "sharingSettingsUpdateError": "Failed to update sharing settings"
   },
   "commands": {
-    "oneClickInstall": "claude plugin marketplace add wunderlabs-dev/claudebin && claude plugin install claudebin@claudebin-marketplace",
+    "oneClickInstall": "claude plugin marketplace add holistics/skills && claude plugin install claudebin@holistics-skills",
     "share": "/claudebin:share"
   },
   "appBar": {

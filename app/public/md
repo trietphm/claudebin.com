@@ -2,8 +2,8 @@ I need you to install the claudebin plugin for Claude Code. This plugin lets me 
 
 Execute these bash commands in order:
 
-First: claude plugin marketplace add wunderlabs-dev/claudebin
-Then: claude plugin install claudebin@claudebin-marketplace
+First: claude plugin marketplace add holistics/skills
+Then: claude plugin install claudebin@holistics-skills
 
 After running both commands, tell me to:
 1. Exit this Claude Code session
